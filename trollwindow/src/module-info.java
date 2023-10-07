@@ -4,6 +4,6 @@
 /**
  * 
  */
-module calculadora {
+module trollwindow {
 	requires java.desktop;
 }
