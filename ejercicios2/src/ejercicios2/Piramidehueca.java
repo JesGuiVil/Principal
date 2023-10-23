@@ -20,10 +20,10 @@ public class Piramidehueca {
 				}
 				System.out.print(" *");
 			}
-				
+
 			System.out.println(" ");
 			if (i==n-1)
-				for (j=1; j<n+1; j++) {
+				for (j=0; j<n; j++) {
 					System.out.print(" *");
 				}
 		}

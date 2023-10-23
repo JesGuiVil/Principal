@@ -45,6 +45,10 @@ public class Ventana {
 
         botoncito = new JButton("Se abrirán unas ventanas que se cierran dando clic, pero solo una esta habilitada. al cerrar esa se habilitará otra. Que comience el juego..");
         botoncito.setBounds(0, 0, 1380, 180);
+        Font fuente = new Font("Arial", Font.PLAIN, 20); // Puedes ajustar el tamaño (18 en este caso)
+
+        // Establecer la fuente en el JButton
+        botoncito.setFont(fuente);
         panel.add(botoncito);
 
         botoncito.addActionListener(new ActionListener() {
@@ -57,8 +61,8 @@ public class Ventana {
 
     private void abrirVentanas() {
 
-        int numColumnas = 5;
-        int numFilas = 5;
+        int numColumnas = 2;
+        int numFilas = 2;
         int screenWidth = (int) java.awt.Toolkit.getDefaultToolkit().getScreenSize().getWidth();
         int screenHeight = (int) java.awt.Toolkit.getDefaultToolkit().getScreenSize().getHeight();
         int windowWidth = screenWidth / numColumnas;
