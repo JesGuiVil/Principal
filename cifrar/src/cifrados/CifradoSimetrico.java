@@ -23,6 +23,10 @@ public class CifradoSimetrico {
 			if (respuesta.equalsIgnoreCase("si")) {
 			    System.out.print("Introduce la clave: ");
 			    String claveStr = scanner.nextLine();
+			    while(claveStr.getBytes().length<16 || claveStr.getBytes().length>16) {
+			    	System.out.println("introduce una clave correcta");
+			    	claveStr=scanner.nextLine();
+			    }
 			    secretKey = new SecretKeySpec(claveStr.getBytes(), "AES");
 
 			} else {
