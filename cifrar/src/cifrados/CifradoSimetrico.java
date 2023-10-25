@@ -5,6 +5,8 @@ import javax.crypto.Cipher;
 import javax.crypto.KeyGenerator;
 import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
+
+import java.security.NoSuchAlgorithmException;
 import java.util.Base64;
 
 public class CifradoSimetrico {
@@ -12,25 +14,30 @@ public class CifradoSimetrico {
     public static void main(String[] args) throws Exception {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.print("¿Tienes una clave? (si/no): ");
-        String respuesta = scanner.nextLine();
+        SecretKey secretKey = null;
+		String mensaje = null;
+		try {
+			System.out.print("¿Tienes una clave? (si/no): ");
+			String respuesta = scanner.nextLine();
 
-        SecretKey secretKey;
+			if (respuesta.equalsIgnoreCase("si")) {
+			    System.out.print("Introduce la clave: ");
+			    String claveStr = scanner.nextLine();
+			    secretKey = new SecretKeySpec(claveStr.getBytes(), "AES");
 
-        if (respuesta.equalsIgnoreCase("si")) {
-            System.out.print("Introduce la clave: ");
-            String claveStr = scanner.nextLine();
-            secretKey = new SecretKeySpec(claveStr.getBytes(), "AES");
+			} else {
+			    KeyGenerator keyGenerator = KeyGenerator.getInstance("AES");
+			    keyGenerator.init(128);
+			    secretKey = keyGenerator.generateKey();
+			    System.out.println("Clave generada automáticamente.");
+			}
 
-        } else {
-            KeyGenerator keyGenerator = KeyGenerator.getInstance("AES");
-            keyGenerator.init(128);
-            secretKey = keyGenerator.generateKey();
-            System.out.println("Clave generada automáticamente.");
-        }
-
-        System.out.print("Introduce un mensaje: ");
-        String mensaje = scanner.nextLine();
+			System.out.print("Introduce un mensaje: ");
+			mensaje = scanner.nextLine();
+		} catch (NoSuchAlgorithmException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
         String mensajeEncriptado = cifrarSimetrico(secretKey, mensaje);
         System.out.println("Mensaje encriptado: " + mensajeEncriptado);
