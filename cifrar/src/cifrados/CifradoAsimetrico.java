@@ -27,7 +27,7 @@ public class CifradoAsimetrico {
 			System.out.print("Seleccione una opción: ");
 			opcion = scanner.nextInt();
 			scanner.nextLine(); // Consume la nueva línea
-
+//aqui me comi una slachipapa
 			switch (opcion) {
 			case 1:
 				System.out.print("Ingrese el mensaje a cifrar: ");
