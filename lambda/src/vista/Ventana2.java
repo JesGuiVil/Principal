@@ -5,12 +5,13 @@ import java.awt.BorderLayout;
 import javax.swing.*;
 
 import controlador.MetodosLambda1;
+import controlador.MetodosLambda2;
 
-public class Ventana1 extends JFrame {
-	Panel1 panel = new Panel1();
-	MetodosLambda1 metodos =new MetodosLambda1(panel);
+public class Ventana2 extends JFrame {
+	Panel2 panel = new Panel2();
+	MetodosLambda2 metodos =new MetodosLambda2(panel);
 	
-	public Ventana1() {
+	public Ventana2() {
         setTitle("Registro de Números");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(505, 330); 
