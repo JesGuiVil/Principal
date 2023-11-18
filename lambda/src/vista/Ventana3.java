@@ -5,21 +5,21 @@ import java.awt.BorderLayout;
 import javax.swing.*;
 
 
-import controlador.MetodosLambda2;
+import controlador.MetodosLambda3;
 
-public class Ventana2 extends JFrame {
-	Panel2 panel = new Panel2();
-	MetodosLambda2 metodos =new MetodosLambda2(panel);
+public class Ventana3 extends JFrame {
+	Panel3 panel = new Panel3();
+	MetodosLambda3 metodos =new MetodosLambda3(panel);
 	
-	public Ventana2() {
-        setTitle("Contador de letras");
+	public Ventana3() {
+        setTitle("Mostrador de fechas");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(505, 330); 
+        setSize(505, 130); 
         setResizable(false);
         setLocationRelativeTo(null);
         add(panel, BorderLayout.CENTER);            
         setVisible(true);
         panel.setVisible(true);
-        panel.textFieldLista.requestFocus();
+        
     }
 }
