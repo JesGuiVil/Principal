@@ -10,13 +10,20 @@ public class TresEnRaya extends JFrame {
     private char[][] board;
     private char currentPlayer;
     private boolean gameOver;
+    private int winsHuman;
+    private int winsMachine;
+    private int ties;
+
+    private JLabel scoreLabel;
 
     public TresEnRaya() {
-    	
         buttons = new JButton[3][3];
         board = new char[3][3];
         currentPlayer = 'X';
         gameOver = false;
+        winsHuman = 0;
+        winsMachine = 0;
+        ties = 0;
         initializeUI();
     }
 
@@ -56,10 +63,28 @@ public class TresEnRaya extends JFrame {
             }
         });
 
-        add(gamePanel, BorderLayout.CENTER);
-        add(resetButton, BorderLayout.SOUTH);
+        // Botón para reiniciar la puntuación
+        JButton resetScoreButton = new JButton("Reiniciar Puntuación");
+        resetScoreButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                resetScore();
+                updateScoreLabel();
+            }
+        });
 
-        setSize(500, 500);
+        scoreLabel = new JLabel("Puntuación: Humano " + winsHuman + " - Máquina " + winsMachine + " - Empates " + ties);
+
+        JPanel buttonPanel = new JPanel();
+        buttonPanel.setLayout(new FlowLayout());
+        buttonPanel.add(resetButton);
+        buttonPanel.add(resetScoreButton);
+
+        add(gamePanel, BorderLayout.CENTER);
+        add(scoreLabel, BorderLayout.NORTH);
+        add(buttonPanel, BorderLayout.SOUTH);
+
+        setSize(500, 550);
         setLocationRelativeTo(null);
         setVisible(true);
     }
@@ -67,13 +92,25 @@ public class TresEnRaya extends JFrame {
     private void onButtonClick(int row, int col) {
         if (!gameOver && board[row][col] == '\0') {
             board[row][col] = currentPlayer;
+
+            // Cambiar color del texto según el jugador
+            if (currentPlayer == 'X') {
+                buttons[row][col].setForeground(Color.GREEN);
+            } else {
+                buttons[row][col].setForeground(Color.RED);
+            }
+
             buttons[row][col].setText(Character.toString(currentPlayer));
 
             if (checkWin(currentPlayer)) {
+                updateScore(currentPlayer);
                 JOptionPane.showMessageDialog(this, currentPlayer + " gana!");
+                updateScoreLabel();
                 gameOver = true;
             } else if (isBoardFull()) {
+                ties++;
                 JOptionPane.showMessageDialog(this, "Empate");
+                updateScoreLabel();
                 gameOver = true;
             } else {
                 currentPlayer = (currentPlayer == 'X') ? 'O' : 'X';
@@ -169,6 +206,18 @@ public class TresEnRaya extends JFrame {
         return true;
     }
 
+    private void updateScore(char player) {
+        if (player == 'X') {
+            winsHuman++;
+        } else if (player == 'O') {
+            winsMachine++;
+        }
+    }
+
+    private void updateScoreLabel() {
+        scoreLabel.setText("Puntuación: Humano " + winsHuman + " - Máquina " + winsMachine + " - Empates " + ties);
+    }
+
     private void resetGame() {
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
@@ -178,6 +227,12 @@ public class TresEnRaya extends JFrame {
         }
         currentPlayer = 'X';
         gameOver = false;
+    }
+
+    private void resetScore() {
+        winsHuman = 0;
+        winsMachine = 0;
+        ties = 0;
     }
 
     public static void main(String[] args) {
