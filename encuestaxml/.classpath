@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-17">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="lib" path="jaxb-ri/mod/codemodel.jar"/>
+	<classpathentry kind="lib" path="jaxb-ri/mod/dtd-parser.jar"/>
+	<classpathentry kind="lib" path="jaxb-ri/mod/FastInfoset.jar"/>
+	<classpathentry kind="lib" path="jaxb-ri/mod/istack-commons-runtime.jar"/>
+	<classpathentry kind="lib" path="jaxb-ri/mod/istack-commons-tools.jar"/>
+	<classpathentry kind="lib" path="jaxb-ri/mod/javax.activation-api.jar"/>
+	<classpathentry kind="lib" path="jaxb-ri/mod/jaxb-api.jar"/>
+	<classpathentry kind="lib" path="jaxb-ri/mod/jaxb-jxc.jar"/>
+	<classpathentry kind="lib" path="jaxb-ri/mod/jaxb-runtime.jar"/>
+	<classpathentry kind="lib" path="jaxb-ri/mod/jaxb-xjc.jar"/>
+	<classpathentry kind="lib" path="jaxb-ri/mod/relaxng-datatype.jar"/>
+	<classpathentry kind="lib" path="jaxb-ri/mod/rngom.jar"/>
+	<classpathentry kind="lib" path="jaxb-ri/mod/stax-ex.jar"/>
+	<classpathentry kind="lib" path="jaxb-ri/mod/txw2.jar"/>
+	<classpathentry kind="lib" path="jaxb-ri/mod/xsom.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/jaxb"/>
+	<classpathentry kind="lib" path="opencsv-5.9.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
